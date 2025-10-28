@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "DemographicIncomeSort::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DemographicIncomeSort-Debug-d19a960af09e3b2c904a.json",
-					"name" : "DemographicIncomeSort",
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-80391cf8f22ac5382f65.json",
+					"name" : "main",
 					"projectIndex" : 0
 				}
 			]

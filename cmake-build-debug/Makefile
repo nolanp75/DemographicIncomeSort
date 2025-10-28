@@ -116,48 +116,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DemographicIncomeSort
+# Target rules for targets named main
 
 # Build rule for target.
-DemographicIncomeSort: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DemographicIncomeSort
-.PHONY : DemographicIncomeSort
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-DemographicIncomeSort/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/build
-.PHONY : DemographicIncomeSort/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
-heapsort.obj: heapsort.cpp.obj
-.PHONY : heapsort.obj
+Customer.obj: Customer.cpp.obj
+.PHONY : Customer.obj
 
 # target to build an object file
-heapsort.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/heapsort.cpp.obj
-.PHONY : heapsort.cpp.obj
+Customer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Customer.cpp.obj
+.PHONY : Customer.cpp.obj
 
-heapsort.i: heapsort.cpp.i
-.PHONY : heapsort.i
+Customer.i: Customer.cpp.i
+.PHONY : Customer.i
 
 # target to preprocess a source file
-heapsort.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/heapsort.cpp.i
-.PHONY : heapsort.cpp.i
+Customer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Customer.cpp.i
+.PHONY : Customer.cpp.i
 
-heapsort.s: heapsort.cpp.s
-.PHONY : heapsort.s
+Customer.s: Customer.cpp.s
+.PHONY : Customer.s
 
 # target to generate assembly for a file
-heapsort.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/heapsort.cpp.s
-.PHONY : heapsort.cpp.s
+Customer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Customer.cpp.s
+.PHONY : Customer.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -165,7 +165,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -173,32 +173,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-quicksort.obj: quicksort.cpp.obj
-.PHONY : quicksort.obj
-
-# target to build an object file
-quicksort.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.obj
-.PHONY : quicksort.cpp.obj
-
-quicksort.i: quicksort.cpp.i
-.PHONY : quicksort.i
-
-# target to preprocess a source file
-quicksort.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.i
-.PHONY : quicksort.cpp.i
-
-quicksort.s: quicksort.cpp.s
-.PHONY : quicksort.s
-
-# target to generate assembly for a file
-quicksort.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.s
-.PHONY : quicksort.cpp.s
 
 # Help Target
 help:
@@ -208,16 +184,13 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DemographicIncomeSort
-	@echo ... heapsort.obj
-	@echo ... heapsort.i
-	@echo ... heapsort.s
+	@echo ... main
+	@echo ... Customer.obj
+	@echo ... Customer.i
+	@echo ... Customer.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... quicksort.obj
-	@echo ... quicksort.i
-	@echo ... quicksort.s
 .PHONY : help
 
 
