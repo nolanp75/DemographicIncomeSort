@@ -1,22 +1,44 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include <vector>
+#include <chrono>
+
+#include "quicksort.cpp"
+#include "heapsort.cpp"
 
 using namespace std;
 
+// data formatted in order of customer_id, name, email, age, gender, city, country, income, credit_score, loyalty_points,
+// first_purchase_data, last_purchase_date, total_spent, avg_order_value, favorite_category,
+// device_type, churn_risk, subscription, marketing_opt_in, support_tickets
+
 int main() {
-    ifstream file("synthetic_customers.csv");
+    string data = "synthetic_customers.csv";
+    string input;
+    ifstream file(data);
     if (!file.is_open()) {
         cerr << "Error opening file!" << endl;
     }
 
-    string line;
-    while (getline(file, line)) {
-        // data formatted in order of customer_id, name, email, age, gender, city, country, income, credit_score, loyalty_points,
-        // first_purchase_data, last_purchase_date, total_spent, avg_order_value, favorite_category,
-        // device_type, churn_risk, subscription, marketing_opt_in, support_tickets
-        cout << line << endl;
+    while (true) {
+        cout << "Please enter your chosen filters:\n(Default, Age, Gender, Country, Average Spent, Category, Credit Score, or Total Spent)" << endl;
+        cin >> input;
+        if (input == "Default") {}
+        else if (input == "Age") {}
+        else if (input == "Gender") {}
+        else if (input == "Country") {}
+        else if (input == "Average Spent") {}
+        else if (input == "Category") {}
+        else if (input == "Credit Score") {}
+        else if (input == "Total Spent") {}
+        else if (input == "Exit") {
+            break;
+        }
+        else {
+            cout << "Invalid input!" << endl;
+        }
     }
 
     file.close();
