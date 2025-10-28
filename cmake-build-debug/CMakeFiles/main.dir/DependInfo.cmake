@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/erict/CLionProjects/testing/Customer.cpp" "CMakeFiles/main.dir/Customer.cpp.obj" "gcc" "CMakeFiles/main.dir/Customer.cpp.obj.d"
   "C:/Users/erict/CLionProjects/testing/main.cpp" "CMakeFiles/main.dir/main.cpp.obj" "gcc" "CMakeFiles/main.dir/main.cpp.obj.d"
+  "C:/Users/erict/CLionProjects/testing/quicksort.cpp" "CMakeFiles/main.dir/quicksort.cpp.obj" "gcc" "CMakeFiles/main.dir/quicksort.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

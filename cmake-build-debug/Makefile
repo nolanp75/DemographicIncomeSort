@@ -176,6 +176,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+quicksort.obj: quicksort.cpp.obj
+.PHONY : quicksort.obj
+
+# target to build an object file
+quicksort.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/quicksort.cpp.obj
+.PHONY : quicksort.cpp.obj
+
+quicksort.i: quicksort.cpp.i
+.PHONY : quicksort.i
+
+# target to preprocess a source file
+quicksort.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/quicksort.cpp.i
+.PHONY : quicksort.cpp.i
+
+quicksort.s: quicksort.cpp.s
+.PHONY : quicksort.s
+
+# target to generate assembly for a file
+quicksort.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/quicksort.cpp.s
+.PHONY : quicksort.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +215,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... quicksort.obj
+	@echo ... quicksort.i
+	@echo ... quicksort.s
 .PHONY : help
 
 
