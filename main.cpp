@@ -34,6 +34,7 @@ int main() {
             customer_cats.push_back(cat);
         }
 
+        double income = stod(customer_cats[7]);
         int age = stoi(customer_cats[3]);
         string gender = customer_cats[4];
         string country = customer_cats[6];
@@ -42,7 +43,7 @@ int main() {
         int credit_score = stoi(customer_cats[8]);
         double total = stod(customer_cats[12]);
 
-        customers.emplace_back(age, gender, country, avg_spent, category, credit_score, total);
+        customers.emplace_back(income, age, gender, country, avg_spent, category, credit_score, total);
     }
     file.close();
 
