@@ -5,6 +5,7 @@
 #include <vector>
 #include <chrono>
 
+#include "Customer.cpp"
 #include "quicksort.cpp"
 #include "heapsort.cpp"
 
@@ -21,6 +22,29 @@ int main() {
     if (!file.is_open()) {
         cerr << "Error opening file!" << endl;
     }
+    vector<Customer> customers;
+    string header;
+    getline(file, header);
+    while (getline(file, input)) {
+        stringstream ss(input);
+        string cat;
+        vector<string> customer_cats;
+
+        while (getline(ss, cat, ',')) {
+            customer_cats.push_back(cat);
+        }
+
+        int age = stoi(customer_cats[3]);
+        string gender = customer_cats[4];
+        string country = customer_cats[6];
+        double avg_spent = stod(customer_cats[13]);
+        string category = customer_cats[14];
+        int credit_score = stoi(customer_cats[8]);
+        double total = stod(customer_cats[12]);
+
+        customers.emplace_back(age, gender, country, avg_spent, category, credit_score, total);
+    }
+    file.close();
 
     while (true) {
         cout << "Please enter your chosen filters:\n(Default, Age, Gender, Country, Average Spent, Category, Credit Score, or Total Spent)" << endl;
@@ -41,6 +65,5 @@ int main() {
         }
     }
 
-    file.close();
     return 0;
 }
