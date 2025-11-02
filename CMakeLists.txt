@@ -3,8 +3,10 @@ project(DemographicIncomeSort)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(main main.cpp
+add_executable(DemographicIncomeSort
+        main.cpp
         Customer.cpp
         quicksort.cpp
+        quicksort.h
         Customer.h
 )

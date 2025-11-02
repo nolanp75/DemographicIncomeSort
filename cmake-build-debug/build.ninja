@@ -40,6 +40,51 @@ include CMakeFiles/rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = C$:/Users/nolan/CLionProjects/DemographicIncomeSort/cmake-build-debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target DemographicIncomeSort
+
+
+#############################################
+# Order-only phony target for DemographicIncomeSort
+
+build cmake_object_order_depends_target_DemographicIncomeSort: phony || .
+
+build CMakeFiles/DemographicIncomeSort.dir/main.cpp.obj: CXX_COMPILER__DemographicIncomeSort_unscanned_Debug C$:/Users/nolan/CLionProjects/DemographicIncomeSort/main.cpp || cmake_object_order_depends_target_DemographicIncomeSort
+  DEP_FILE = CMakeFiles\DemographicIncomeSort.dir\main.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\DemographicIncomeSort.dir
+  OBJECT_FILE_DIR = CMakeFiles\DemographicIncomeSort.dir
+
+build CMakeFiles/DemographicIncomeSort.dir/Customer.cpp.obj: CXX_COMPILER__DemographicIncomeSort_unscanned_Debug C$:/Users/nolan/CLionProjects/DemographicIncomeSort/Customer.cpp || cmake_object_order_depends_target_DemographicIncomeSort
+  DEP_FILE = CMakeFiles\DemographicIncomeSort.dir\Customer.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\DemographicIncomeSort.dir
+  OBJECT_FILE_DIR = CMakeFiles\DemographicIncomeSort.dir
+
+build CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.obj: CXX_COMPILER__DemographicIncomeSort_unscanned_Debug C$:/Users/nolan/CLionProjects/DemographicIncomeSort/quicksort.cpp || cmake_object_order_depends_target_DemographicIncomeSort
+  DEP_FILE = CMakeFiles\DemographicIncomeSort.dir\quicksort.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\DemographicIncomeSort.dir
+  OBJECT_FILE_DIR = CMakeFiles\DemographicIncomeSort.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target DemographicIncomeSort
+
+
+#############################################
+# Link the executable DemographicIncomeSort.exe
+
+build DemographicIncomeSort.exe: CXX_EXECUTABLE_LINKER__DemographicIncomeSort_Debug CMakeFiles/DemographicIncomeSort.dir/main.cpp.obj CMakeFiles/DemographicIncomeSort.dir/Customer.cpp.obj CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.obj
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\DemographicIncomeSort.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = DemographicIncomeSort.exe
+  TARGET_IMPLIB = libDemographicIncomeSort.dll.a
+  TARGET_PDB = DemographicIncomeSort.exe.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -66,6 +111,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build DemographicIncomeSort: phony DemographicIncomeSort.exe
+
 # =============================================================================
 # Folder targets.
 
@@ -74,7 +121,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: C:/Users/nolan/CLionProjects/DemographicIncomeSort/cmake-build-debug
 
-build all: phony
+build all: phony DemographicIncomeSort.exe
 
 # =============================================================================
 # Built-in targets
