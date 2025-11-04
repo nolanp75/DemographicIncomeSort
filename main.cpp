@@ -79,12 +79,31 @@ int main() {
 
         if (filters.empty()) continue; //ask again
 
-        //timer
+
+        //choose algorithm here_________________________________________________________________________________________
+        string algorithm;
+        cout << "Sort by which algorithm (QuickSort or HeapSort)" << endl;
+        getline(cin >> ws, algorithm);
+
+        //timer start
         auto start_time = chrono::high_resolution_clock::now();
-        quicksort(customers, 0, customers.size()-1, filters); //fix this
+
+        //call algorithm
+        if (algorithm == "QuickSort") {
+            quicksort(customers, 0, customers.size()-1, filters);
+        }
+        else if (algorithm == "HeapSort") {
+            //heapsort();
+        }
+        else {
+            cout << "Invalid algorithm" << endl;
+        }
+
+        //timer logic
         auto end_time = chrono::high_resolution_clock::now();
         auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
         cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
+
 
         //write sort to file
         ofstream outfile("quicksorted_customers.csv");
