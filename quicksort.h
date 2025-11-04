@@ -9,9 +9,9 @@
 #include "Customer.h"
 using namespace std;
 
-void quicksort(vector<Customer>& v, int low, int high, int cat);
+void quicksort(vector<Customer>& v, int low, int high, const vector<int>& filters);
 
-int partition(vector<Customer>& v, int low, int high, int cat);
+int partition(vector<Customer>& v, int low, int high, const vector<int>& filters);
 
-bool isLess(Customer& c1, Customer& c2, int cat);
+bool isLess(Customer& c1, Customer& c2, const vector<int>& filters);
 #endif //QUICKSORT_H
