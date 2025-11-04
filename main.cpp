@@ -53,7 +53,7 @@ int main() {
 
     //get filter, we want to make it so that you incrementally add filters, one after another, not all in one go.
     while (true) {
-        cout << "\nPlease enter your chosen filters:\n(Income, Age, Gender, Country, Average Spent, Category, Credit Score, or Total Spent)" << endl;
+        cout << "\nPlease enter your chosen filters seperated by commas:\n(Income, Age, Gender, Country, Average Spent, Category, Credit Score, or Total Spent)" << endl;
         getline(cin >> ws, input);
 
 
