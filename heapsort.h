@@ -7,9 +7,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Customer.h"
 using namespace std;
 
 //idk if we need to make it a class but it should be fine with this
+
+bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters);
 
 void heapsort(vector<Customer>& customers, const vector<int>& filters);
 

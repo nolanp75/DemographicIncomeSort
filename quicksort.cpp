@@ -74,6 +74,7 @@ bool isLess(Customer& c1, Customer& c2, const vector<int>& filters) {
             return c1.getIncome() < c2.getIncome();
         }
     }
+    return false;
 
     //commenting this to try and implement several filters, safe to delete
 

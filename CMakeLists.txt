@@ -9,4 +9,6 @@ add_executable(DemographicIncomeSort
         quicksort.cpp
         quicksort.h
         Customer.h
+        heapsort.h
+        heapsort.cpp
 )

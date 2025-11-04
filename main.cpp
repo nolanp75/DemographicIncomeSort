@@ -7,7 +7,7 @@
 
 #include "Customer.h"
 #include "quicksort.h"
-#include "heapsort.cpp"
+#include "heapsort.h"
 
 using namespace std;
 
@@ -15,7 +15,45 @@ using namespace std;
 // first_purchase_data, last_purchase_date, total_spent, avg_order_value, favorite_category,
 // device_type, churn_risk, subscription, marketing_opt_in, support_tickets
 
+void mainSort(ofstream& outfile, const vector<int>& filters, const vector<Customer>& customers) {
+    outfile << "ID"; //always has their id in it
+    for (int f : filters) {
+        if (f==0) outfile << ", Income";
+        else if (f==1) outfile << ", Age";
+        else if (f==2) outfile << ", Gender";
+        else if (f==3) outfile << ", Country";
+        else if (f==4) outfile << ", Average Spent";
+        else if (f==5) outfile << ", Category";
+        else if (f==6) outfile << ", Credit Score";
+        else if (f==7) outfile << ", Total Spent";
+    }
+    outfile << "\n";
+
+    //actual body, it sorts things in the order u give it (IMPORTANT!!!!)_________________________________________________________________________________________________
+    //example if its (country, age, income) they sort in that order
+    //if two customers have same country, they sort by age, and so forth
+    //changing the order of the filters changes the priority of sorting
+
+    for (Customer c : customers) {
+        outfile << c.getID();
+        for (int f : filters) {
+            if (f==0) outfile << " - $" << c.getIncome();
+            else if (f==1) outfile << " - " << c.getAge();
+            else if (f==2) outfile << " - " << c.getGender();
+            else if (f==3) outfile << " - " << c.getCountry();
+            else if (f==4) outfile << " - $" << c.getAvgSpent();
+            else if (f==5) outfile << " - " << c.getCategory();
+            else if (f==6) outfile << " - " << c.getCreditScore();
+            else if (f==7) outfile << " - $" << c.getTotalSpent();
+        }
+        outfile << "\n";
+    }
+    outfile.close();
+
+}
+
 int main() {
+    bool exit = false;
     string data = "../synthetic_customers.csv";
     string input;
     ifstream file(data);
@@ -53,7 +91,7 @@ int main() {
 
     //get filter, we want to make it so that you incrementally add filters, one after another, not all in one go.
     while (true) {
-        cout << "\nPlease enter your chosen filters seperated by commas:\n(Income, Age, Gender, Country, Average Spent, Category, Credit Score, or Total Spent)" << endl;
+        cout << "\nPlease enter your chosen filters seperated by commas:\n(Income, Age, Gender, Country, Average Spent, Category, Credit Score, Total Spent, or Exit to quit (ex. 'Income, Age')" << endl;
         getline(cin >> ws, input);
 
 
@@ -74,9 +112,16 @@ int main() {
             else if (filter_name == "Category") filters.push_back(5);
             else if (filter_name == "Credit Score") filters.push_back(6);
             else if (filter_name == "Total Spent") filters.push_back(7);
+            else if (filter_name == "Exit") {
+                exit = true;
+                break;
+            }
             else cout << "Filter " << filter_name << " does not exist" << endl;
         }
-
+        if (exit) {
+            cout << "Goodbye!" << endl;
+            break;
+        }
         if (filters.empty()) continue; //ask again
 
 
@@ -91,218 +136,36 @@ int main() {
         //call algorithm
         if (algorithm == "QuickSort") {
             quicksort(customers, 0, customers.size()-1, filters);
+            //timer logic
+            auto end_time = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
+            cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
+
+
+            //write sort to file
+            ofstream outfileQuick("quicksorted_customers.csv");
+            mainSort(outfileQuick, filters, customers);
         }
         else if (algorithm == "HeapSort") {
             //heapsort();
+            heapsort(customers, filters);
+            //timer logic
+            auto end_time = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
+            cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
+
+
+            //write sort to file
+            ofstream outfileHeap("heapsorted_customers.csv");
+            mainSort(outfileHeap, filters, customers);
         }
         else {
             cout << "Invalid algorithm" << endl;
         }
 
-        //timer logic
-        auto end_time = chrono::high_resolution_clock::now();
-        auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
 
-
-        //write sort to file
-        ofstream outfile("quicksorted_customers.csv");
-
-        //header
-        outfile << "ID"; //always has their id in it
-        for (int f : filters) {
-            if (f==0) outfile << ", Income";
-            else if (f==1) outfile << ", Age";
-            else if (f==2) outfile << ", Gender";
-            else if (f==3) outfile << ", Country";
-            else if (f==4) outfile << ", Average Spent";
-            else if (f==5) outfile << ", Category";
-            else if (f==6) outfile << ", Credit Score";
-            else if (f==7) outfile << ", Total Spent";
-        }
-        outfile << "\n";
-
-        //actual body, it sorts things in the order u give it (IMPORTANT!!!!)_________________________________________________________________________________________________
-        //example if its (country, age, income) they sort in that order
-        //if two customers have same country, they sort by age, and so forth
-        //changing the order of the filters changes the priority of sorting
-
-        for (Customer c : customers) {
-            outfile << c.getID();
-            for (int f : filters) {
-                if (f==0) outfile << " - $" << c.getIncome();
-                else if (f==1) outfile << " - " << c.getAge();
-                else if (f==2) outfile << " - " << c.getGender();
-                else if (f==3) outfile << " - " << c.getCountry();
-                else if (f==4) outfile << " - $" << c.getAvgSpent();
-                else if (f==5) outfile << " - " << c.getCategory();
-                else if (f==6) outfile << " - " << c.getCreditScore();
-                else if (f==7) outfile << " - $" << c.getTotalSpent();
-            }
-            outfile << "\n";
-        }
-        outfile.close();
-
-        //commenting this to try and implement several filters, safe to delete
-
-        // //differentiates inputs
-        // if (input == "Default") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 0);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Income" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << ": $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Age") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 1);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Age" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Age: " << customers[i].getAge() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Gender") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 2);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Gender" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Gender: " << customers[i].getGender() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Country") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 3);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Country" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Country: " << customers[i].getCountry() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Average Spent") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 4);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Average Spent Per Order" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Average Spent: $" << customers[i].getAvgSpent() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Category") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 5);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Most Common Category of Purchase" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Category: " << customers[i].getAge() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Credit Score") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 6);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Credit Score" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Credit Score: " << customers[i].getCreditScore() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        //
-        //
-        // else if (input == "Total Spent") {
-        //     auto start_time = chrono::high_resolution_clock::now();
-        //
-        //     quicksort(customers, 0, customers.size()-1, 7);
-        //     auto end_time = chrono::high_resolution_clock::now();
-        //     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-        //     ofstream outfile("quicksorted_customers.csv");
-        //     if (!outfile.is_open()) {
-        //         cerr << "Error opening file!" << endl;
-        //     }
-        //     outfile << "Total Spent" << endl;
-        //     for (int i = 0; i < customers.size(); i++) {
-        //         outfile << customers[i].getID() << " Total Spent: $" << customers[i].getTotalSpent() << ", Income: $" << customers[i].getIncome() << endl;
-        //     }
-        //
-        //     cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
-        // }
-        // else if (input == "Exit") {
-        //     break;
-        // }
-        // else {
-        //     cout << "Invalid input!" << endl;
-        // }
     }
+
 
     return 0;
 }
