@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named DemographicIncomeSort
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main
-.PHONY : main
+DemographicIncomeSort: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DemographicIncomeSort
+.PHONY : DemographicIncomeSort
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+DemographicIncomeSort/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/build
+.PHONY : DemographicIncomeSort/fast
 
 Customer.obj: Customer.cpp.obj
 .PHONY : Customer.obj
 
 # target to build an object file
 Customer.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Customer.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/Customer.cpp.obj
 .PHONY : Customer.cpp.obj
 
 Customer.i: Customer.cpp.i
@@ -141,7 +141,7 @@ Customer.i: Customer.cpp.i
 
 # target to preprocess a source file
 Customer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Customer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/Customer.cpp.i
 .PHONY : Customer.cpp.i
 
 Customer.s: Customer.cpp.s
@@ -149,7 +149,7 @@ Customer.s: Customer.cpp.s
 
 # target to generate assembly for a file
 Customer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Customer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/Customer.cpp.s
 .PHONY : Customer.cpp.s
 
 main.obj: main.cpp.obj
@@ -157,7 +157,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -165,7 +165,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -173,7 +173,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 quicksort.obj: quicksort.cpp.obj
@@ -181,7 +181,7 @@ quicksort.obj: quicksort.cpp.obj
 
 # target to build an object file
 quicksort.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/quicksort.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.obj
 .PHONY : quicksort.cpp.obj
 
 quicksort.i: quicksort.cpp.i
@@ -189,7 +189,7 @@ quicksort.i: quicksort.cpp.i
 
 # target to preprocess a source file
 quicksort.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/quicksort.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.i
 .PHONY : quicksort.cpp.i
 
 quicksort.s: quicksort.cpp.s
@@ -197,7 +197,7 @@ quicksort.s: quicksort.cpp.s
 
 # target to generate assembly for a file
 quicksort.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/quicksort.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/quicksort.cpp.s
 .PHONY : quicksort.cpp.s
 
 # Help Target
@@ -208,7 +208,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... main
+	@echo ... DemographicIncomeSort
 	@echo ... Customer.obj
 	@echo ... Customer.i
 	@echo ... Customer.s
