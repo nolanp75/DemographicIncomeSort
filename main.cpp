@@ -89,9 +89,10 @@ int main() {
 
 
 
-    //get filter, we want to make it so that you incrementally add filters, one after another, not all in one go.
+    //get filter
     while (true) {
-        cout << "\nPlease enter your chosen filters seperated by commas:\n(Income, Age, Gender, Country, Average Spent, Category, Credit Score, Total Spent, or Exit to quit (ex. 'Income, Age')" << endl;
+        cout << "\nPlease enter your chosen filters seperated by commas:-----------------------------------------------------------------"
+                "\n(Income, Age, Gender, Country, Average Spent, Category, Credit Score, Total Spent, or Exit to quit (ex. 'Income, Age')" << endl;
         getline(cin >> ws, input);
 
 
@@ -99,6 +100,10 @@ int main() {
         vector<int> filters;
         stringstream ss(input);
         string filter_name;
+
+        bool filters_are_valid = false;
+
+
         while (getline(ss, filter_name, ',')) {
 
             filter_name.erase(0, filter_name.find_first_not_of(" \t\n\r"));     //rid any spaces
@@ -116,7 +121,11 @@ int main() {
                 exit = true;
                 break;
             }
-            else cout << "Filter " << filter_name << " does not exist" << endl;
+            else {
+                cout << "Filter " << filter_name << " does not exist\n" << endl;
+                filters_are_valid = true;
+                break;
+            }
         }
         if (exit) {
             cout << "Goodbye!" << endl;
@@ -127,8 +136,14 @@ int main() {
 
         //choose algorithm here_________________________________________________________________________________________
         string algorithm;
-        cout << "Sort by which algorithm (QuickSort or HeapSort)" << endl;
-        getline(cin >> ws, algorithm);
+
+        while (true) {
+            cout << "Sort by which algorithm (QuickSort or HeapSort)" << endl;
+            getline(cin >> ws, algorithm);
+
+            if (algorithm == "QuickSort" || algorithm == "HeapSort") {break;}
+            else {cout << "Invalid algorithm!\n" << endl;}
+        }
 
         //timer start
         auto start_time = chrono::high_resolution_clock::now();
@@ -152,7 +167,7 @@ int main() {
             //timer logic
             auto end_time = chrono::high_resolution_clock::now();
             auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
-            cout << "Quicksort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
+            cout << "Heapsort Execution time: " << duration.count() * 0.000001 << " seconds" << endl;
 
 
             //write sort to file
