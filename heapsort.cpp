@@ -15,7 +15,6 @@ bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters) {
                 return true;
             if (c1.getIncome() > c2.getIncome())
                 return false;
-            return c1.getIncome() < c2.getIncome();
         }
 
         if (f == 1) {
@@ -23,7 +22,6 @@ bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters) {
                 return true;
             if (c1.getAge() > c2.getAge())
                 return false;
-            return c1.getIncome() < c2.getIncome();
         }
 
         if (f == 2) {
@@ -39,7 +37,6 @@ bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters) {
                 return true;
             if (c1.getCountry() > c2.getCountry())
                 return false;
-            return c1.getIncome() < c2.getIncome();
         }
 
         if (f == 4) {
@@ -47,15 +44,13 @@ bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters) {
                 return true;
             if (c1.getAvgSpent() > c2.getAvgSpent())
                 return false;
-            return c1.getIncome() < c2.getIncome();
         }
 
         if (f == 5) {
             if (c1.getCategory() < c2.getCategory())
                 return true;
             if (c1.getCategory() > c2.getCategory())
-                return false;
-            return c1.getIncome() < c2.getIncome();
+                return false;;
         }
 
         if (f == 6) {
@@ -63,7 +58,6 @@ bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters) {
                 return true;
             if (c1.getCreditScore() > c2.getCreditScore())
                 return false;
-            return c1.getIncome() < c2.getIncome();
         }
 
         if (f == 7) {
@@ -71,7 +65,6 @@ bool isLessHeap(Customer& c1, Customer& c2, const vector<int>& filters) {
                 return true;
             if (c1.getTotalSpent() > c2.getTotalSpent())
                 return false;
-            return c1.getIncome() < c2.getIncome();
         }
     }
     return false;

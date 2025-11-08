@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2024.3.1.1\bin\cmake\win\x64\bin\cmake.ex
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\erict\CLionProjects\testing
+CMAKE_SOURCE_DIR = C:\Users\erict\CLionProjects\test
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\erict\CLionProjects\testing\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\erict\CLionProjects\test\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\erict\CLionProjects\testing\cmake-build-debug\CMakeFiles C:\Users\erict\CLionProjects\testing\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\erict\CLionProjects\test\cmake-build-debug\CMakeFiles C:\Users\erict\CLionProjects\test\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\erict\CLionProjects\testing\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\erict\CLionProjects\test\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -152,6 +152,30 @@ Customer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/Customer.cpp.s
 .PHONY : Customer.cpp.s
 
+heapsort.obj: heapsort.cpp.obj
+.PHONY : heapsort.obj
+
+# target to build an object file
+heapsort.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/heapsort.cpp.obj
+.PHONY : heapsort.cpp.obj
+
+heapsort.i: heapsort.cpp.i
+.PHONY : heapsort.i
+
+# target to preprocess a source file
+heapsort.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/heapsort.cpp.i
+.PHONY : heapsort.cpp.i
+
+heapsort.s: heapsort.cpp.s
+.PHONY : heapsort.s
+
+# target to generate assembly for a file
+heapsort.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DemographicIncomeSort.dir\build.make CMakeFiles/DemographicIncomeSort.dir/heapsort.cpp.s
+.PHONY : heapsort.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -212,6 +236,9 @@ help:
 	@echo ... Customer.obj
 	@echo ... Customer.i
 	@echo ... Customer.s
+	@echo ... heapsort.obj
+	@echo ... heapsort.i
+	@echo ... heapsort.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
